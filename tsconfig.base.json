@@ -10,14 +10,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": ["esNext", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bridge-ui/core": ["packages/core/src/index.ts"],
-      "@bridge-ui/demo": ["packages/demo/src/index.ts"]
-    }
+      "@ui-bridge/core": ["packages/core/src/index.ts"]
+    },
+    "jsx": "react",
+    "jsxFactory": "DOM",
+    "jsxFragmentFactory": "FRAGMENT",
+    "types": ["./packages/core/src/index.d.ts"]
   },
   "exclude": ["node_modules", "tmp"]
 }

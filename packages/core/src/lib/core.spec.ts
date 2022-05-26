@@ -1,7 +1,7 @@
-import { core } from './core';
+import { DOM } from './core';
 
-describe('core', () => {
+describe('myNewLib', () => {
   it('should work', () => {
-    expect(core()).toEqual('core');
+    expect(DOM()).toEqual('my-new-lib');
   });
 });

@@ -1,15 +1,52 @@
 {
-  "root": "packages/demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
   "sourceRoot": "packages/demo/src",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/web:webpack",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/packages/demo",
-        "main": "packages/demo/src/index.ts",
-        "tsConfig": "packages/demo/tsconfig.lib.json",
-        "assets": ["packages/demo/*.md"]
+        "compiler": "babel",
+        "index": "packages/demo/src/index.html",
+        "baseHref": "/",
+        "main": "packages/demo/src/main.ts",
+        "polyfills": "packages/demo/src/polyfills.ts",
+        "tsConfig": "packages/demo/tsconfig.app.json",
+        "assets": ["packages/demo/src/favicon.ico", "packages/demo/src/assets"],
+        "styles": ["packages/demo/src/styles.scss"],
+        "scripts": [],
+        "workerTsConfig": "packages/demo/tsconfig.worker.json"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "packages/demo/src/environments/environment.ts",
+              "with": "packages/demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "demo:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "demo:build:production"
+        }
       }
     },
     "lint": {
@@ -23,10 +60,9 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/demo"],
       "options": {
-        "jestConfig": "packages/demo/jest.config.js",
+        "jestConfig": "packages/demo/jest.config.ts",
         "passWithNoTests": true
       }
     }
-  },
-  "tags": []
+  }
 }

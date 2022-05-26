@@ -1,13 +1,6 @@
-import '@ui-bridge/core';
+import { WorkerBridge } from '@ui-bridge/core';
 import { FooComponent } from './foo';
 
-export const test = () => {
+export const app = () => <FooComponent test={true} />;
 
-  return (
-    <>
-      <FooComponent test={true}></FooComponent>
-    </>
-  );
-}
-
-console.log(test())
+WorkerBridge(app);

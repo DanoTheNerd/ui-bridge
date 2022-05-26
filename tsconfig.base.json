@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ui-bridge/core": ["packages/core/src/index.ts"]
+      "@ui-bridge/core": ["packages/core/src/index.ts"],
+      "@ui-bridge/core/*": ["packages/core/src/*"]
     },
     "jsx": "react",
     "jsxFactory": "DOM",

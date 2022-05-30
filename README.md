@@ -1,4 +1,4 @@
-# Bridge
+# WIP Bridge
 experimental tsx component based library for web worker
 
 This project was generated using [Nx](https://nx.dev).
